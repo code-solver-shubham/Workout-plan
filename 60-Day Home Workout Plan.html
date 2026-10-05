@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>60-Day Upper-Intermediate Home Plan</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff7f9;--card:#fff;--tx:#2a1a22;--mu:#7a6670;--ac:#e0457b;--ac2:#7c4dff;--ok:#1fa971;--ln:#f1d5df}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150d12;--card:#22141c;--tx:#f7e9ef;--mu:#b79aa8;--ln:#3a2330}}
+:root[data-theme="dark"]{--bg:#150d12;--card:#22141c;--tx:#f7e9ef;--mu:#b79aa8;--ln:#3a2330}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45;padding:14px;max-width:720px;margin-inline:auto}
+h1{font-size:22px;margin:4px 0}h2{font-size:17px;margin:22px 0 8px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:16px;padding:14px;margin:10px 0}
+.hero{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;border:0}
+.stats{display:flex;gap:8px;margin-top:10px}.stats div{flex:1;background:rgba(255,255,255,.18);border-radius:12px;padding:8px;text-align:center}
+.stats b{display:block;font-size:20px}.stats span{font-size:11px}
+.bar{height:10px;background:rgba(255,255,255,.3);border-radius:9px;margin-top:10px;overflow:hidden}.bar i{display:block;height:100%;background:#fff;width:0;transition:width .4s}
+details{background:var(--card);border:1px solid var(--ln);border-radius:14px;margin:8px 0;padding:10px 12px}
+summary{font-weight:600;cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}td,th{padding:6px 4px;border-bottom:1px solid var(--ln);text-align:left;vertical-align:top}th{color:var(--mu);font-weight:600}
+.mu{color:var(--mu);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+.d{aspect-ratio:1;border-radius:8px;border:1px solid var(--ln);background:var(--card);font-size:11px;color:var(--mu);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.d.on{background:var(--ok);color:#fff;border-color:var(--ok)}.d.rest{background:transparent;border-style:dashed;cursor:default}
+.badges{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.b{border:1px dashed var(--ln);border-radius:12px;padding:8px;font-size:13px;opacity:.45}.b.on{opacity:1;border:1px solid var(--ac);background:rgba(224,69,123,.08)}
+.b em{font-style:normal;font-size:22px;display:block}
+.svgw{overflow-x:auto}svg{width:100%;height:auto;display:block}
+ul{padding-left:18px;margin:6px 0}li{margin:3px 0}
+button.r{background:none;border:1px solid var(--ln);color:var(--mu);border-radius:10px;padding:6px 10px;font-size:12px;margin-top:8px}
+</style></head><body>
+
+<div class="card hero">
+<h1>💪 60-Day Strong Girl Plan</h1>
+<div style="font-size:13px;opacity:.9">Upper-Intermediate • 1 dumbbell • 6 days/week • Goal: full push-ups</div>
+<div class="stats"><div><b id="sDone">0</b><span>Workouts</span></div><div><b id="sStreak">0</b><span>Streak 🔥</span></div><div><b id="sXp">0</b><span>XP ⭐</span></div><div><b id="sLv">1</b><span>Level</span></div></div>
+<div class="bar"><i id="pb"></i></div>
+</div>
+
+<h2>✅ 60-Day Tracker <span class="mu">(tap the day when done)</span></h2>
+<div class="card"><div class="grid" id="grid"></div>
+<p class="mu">Every 7th day (😴) = rest. Rest days are free and never break your streak. Each workout = 10 XP, 7-day streak bonus = +30 XP.</p></div>
+
+<h2>🏆 Rewards</h2>
+<div class="badges" id="badges"></div>
+
+<h2>📈 Progress Graphs</h2>
+<div class="card"><b>Strength target (Day 1 = 100%)</b><div class="mu">Pink = planned strength growth • Green = your real consistency %</div><div class="svgw" id="c1"></div></div>
+<div class="card"><b>Push-up ladder: full push-up reps per set (target)</b><div class="svgw" id="c2"></div></div>
+
+<h2>🗓 Weekly Plan (Mon–Sat, Sun rest)</h2>
+<p class="mu">Every exercise: <b>4 sets × 12–15 reps</b>, rest 45–60 sec. Push-ups & planks use the ladder below. Warm-up: 2 min march + arm circles + 10 bodyweight squats.</p>
+<div id="plan"></div>
+
+<h2>🎯 Full Push-up Ladder</h2>
+<div class="card"><table><tr><th>Phase</th><th>Days</th><th>What to do</th></tr>
+<tr><td>1</td><td>1–14</td><td>Half push-ups 4×12 with slow 3-sec lowering. Chest to ~fist height from floor.</td></tr>
+<tr><td>2</td><td>15–28</td><td>Hands on a bed/table edge (incline) 4×12–15, then lower the surface each week.</td></tr>
+<tr><td>3</td><td>29–42</td><td>Negatives: start full plank, lower in 5 sec, knees up. 4×6–8 + incline push-ups 2×15.</td></tr>
+<tr><td>4</td><td>43–56</td><td>Full push-ups: 4 sets of 1–3 clean reps (rest 60s), add 1 rep/week. Rest with negatives.</td></tr>
+<tr><td>Test</td><td>57–60</td><td>Max full push-ups in one set. Target 5–10! 🎉</td></tr></table>
+<p class="mu">Rule: only count a rep if body is straight (no sagging hips), chest near floor, elbows ~45°.</p></div>
+
+<h2>⬆️ Progressive Overload (How to add)</h2>
+<div class="card"><ul>
+<li><b>Double progression:</b> Do all 4 sets at 12 → keep same weight and add reps until 15 on all 4 sets. Then make it harder (below) and drop back to 12.</li>
+<li><b>Days 1–14:</b> 4×12, slow tempo (3 sec down, 1 sec up). Master form.</li>
+<li><b>Days 15–28:</b> 4×15 same tempo. Rest shortened 60s → 45s.</li>
+<li><b>Days 29–42:</b> Make it harder with one dumbbell: single-leg versions, 1-sec pause at the bottom, 4×12.</li>
+<li><b>Days 43–56:</b> Hold dumbbell farther from body / higher reps (to 15), slower 4-sec lowering, 4×12→15.</li>
+<li><b>Days 57–60:</b> Test week: max reps with clean form. Compare with Day 1.</li>
+<li>One dumbbell trick: make it heavier by using one arm/leg at a time, adding pauses, and adding a backpack with books (2–5 kg) for squats, lunges and bridges.</li>
+<li>Log reps in a notebook. If last set feels like 2 reps left in the tank, you're in the sweet spot.</li>
+</ul></div>
+
+<h2>🧘 Daily 5-min Stretch (after workout)</h2>
+<div class="card"><table><tr><th>Min</th><th>Stretch</th></tr>
+<tr><td>0:00</td><td>Child's pose + deep breathing (45 sec)</td></tr>
+<tr><td>0:45</td><td>Cat-cow (40 sec)</td></tr>
+<tr><td>1:25</td><td>Chest/doorway stretch (30 sec each side)</td></tr>
+<tr><td>2:25</td><td>Cross-body shoulder + triceps stretch (20 sec each side, each)</td></tr>
+<tr><td>3:25</td><td>Standing quad stretch (20 sec each leg)</td></tr>
+<tr><td>4:05</td><td>Seated hamstring fold (45 sec)</td></tr>
+<tr><td>4:50</td><td>Figure-4 glute stretch (10 sec each, lying) + deep breaths</td></tr></table></div>
+
+<div class="card mu"><b>Recovery basics:</b> sleep 8–9 hrs (she's still growing). Eat enough protein (dal, paneer, eggs, curd, chana, milk) at every meal and don't skip meals — muscle needs food. Stop an exercise if there's sharp pain. One easy day (walk) is fine whenever she feels very tired.</div>
+<button class="r" id="rst">Reset progress</button>
+
+<script>
+var PLAN=[
+["Day 1 • Upper Push","Chest, shoulders, triceps",[["Push-ups (use ladder)","Phase variation"],["DB overhead press (one DB, both hands or alternate)","Slow up, 3 sec down"],["DB floor press (both hands hold DB)","Elbows 45°"],["DB overhead triceps extension","Elbows close to ears"],["Pike push-ups","Hips high"],["Plank shoulder taps","20-40 sec"]]],
+["Day 2 • Lower (Quad + Glute)","Thighs, glutes, calves",[["Goblet squat","Hold DB at chest"],["Reverse lunge (alternate)","12-15 each leg"],["DB glute bridge","DB on hips, squeeze 1 sec"],["Sumo squat","DB between legs"],["Wall sit","30-45 sec"],["Calf raises","Single leg later"]]],
+["Day 3 • Upper Pull + Core","Back, biceps, rear delts",[["One-arm DB row","Chair support, each arm"],["Bent-over DB rear fly (light)","Squeeze shoulder blades"],["DB biceps curl (alternate)","No swinging"],["Prone Y-T-W raises","Lie on floor, no weight"],["Superman hold","2 sec squeeze"],["Dead bug","Slow, back flat"]]],
+["Day 4 • Lower (Hamstring + Glute)","Back of thigh, glutes",[["DB Romanian deadlift","Hips back, flat back"],["Bulgarian split squat","Back foot on chair"],["Single-leg glute bridge","Each leg"],["Step-ups","Stair or sturdy chair"],["Side-lying leg raises","Each side"],["Glute kickbacks","On all fours"]]],
+["Day 5 • Upper Mix","Push + pull + arms",[["Push-ups (ladder)","Quality reps"],["One-arm DB row","Each arm"],["DB lateral raise","Light, 3 sec down"],["Hammer curl","Neutral grip"],["Tricep dips (chair)","Bend knees"],["Plank","30-60 sec"]]],
+["Day 6 • Lower + Core","Legs and abs finisher",[["Goblet squat (pause 1 sec)","Chest up"],["Walking lunges / split squat","Each leg"],["DB sumo deadlift","Straight back"],["Glute bridge march","Hips level"],["Bicycle crunches","Slow"],["Leg raises","Lower back pressed"]]]
+];
+var BAD=[[3,"🔥","Spark"],[7,"⚡","Week Warrior"],[14,"💎","Fortnight Fire"],[21,"🌸","Habit Formed"],[30,"🏅","Halfway Hero"],[45,"🚀","Unstoppable"],[52,"👑","All Workouts Done"]];
+var done={},store=null;
+try{store=window.localStorage}catch(e){}
+try{done=JSON.parse(store.getItem("p60")||"{}")}catch(e){done={}}
+function save(){try{store.setItem("p60",JSON.stringify(done))}catch(e){}}
+function isRest(n){return n%7==0}
+function render(){
+var g=document.getElementById("grid");g.innerHTML="";var cnt=0,streak=0,cur=0,xp=0;
+for(var n=1;n<=60;n++){var b=document.createElement("button");b.className="d";
+if(isRest(n)){b.className+=" rest";b.textContent="😴"}else{b.textContent=n;if(done[n]){b.className+=" on";cnt++;cur++;xp+=10;if(cur>streak)streak=cur;if(cur%7==0)xp+=30}else{cur=0}
+(function(k){b.onclick=function(){if(done[k])delete done[k];else done[k]=1;save();render()}})(n)}
+g.appendChild(b)}
+// current streak (ending at last done)
+var s=0,last=0;for(var i=1;i<=60;i++){if(done[i])last=i}
+for(var j=last;j>=1;j--){if(isRest(j))continue;if(done[j])s++;else break}
+document.getElementById("sDone").textContent=cnt;document.getElementById("sStreak").textContent=s;
+document.getElementById("sXp").textContent=xp;document.getElementById("sLv").textContent=1+Math.floor(xp/100);
+document.getElementById("pb").style.width=Math.round(cnt/52*100)+"%";
+var bd=document.getElementById("badges");bd.innerHTML="";
+BAD.forEach(function(x){var d=document.createElement("div");d.className="b"+(cnt>=x[0]?" on":"");d.innerHTML="<em>"+x[1]+"</em><b>"+x[2]+"</b><br>"+x[0]+" workouts";bd.appendChild(d)});
+chart1(cnt);}
+function chart1(cnt){
+var W=640,H=240,l=36,r=10,t=14,bt=28,pw=W-l-r,ph=H-t-bt;
+function X(d){return l+d/60*pw}function Y(v){return t+ph-(v-90)/(170-90)*ph}
+var plan=[],i;for(i=0;i<=60;i+=1){plan.push([i,100+60*Math.pow(i/60,0.85)])}
+var p="M"+plan.map(function(a){return X(a[0])+" "+Y(a[1])}).join("L");
+var a="";for(var d=1;d<=60;d++){var c=0,tot=0;for(var k=1;k<=d;k++){if(!isRest(k)){tot++;if(done[k])c++}}
+if(d<=lastDay()){a+=(a?"L":"M")+X(d)+" "+Y(90+80*(c/tot))}}
+var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Strength target graph">';
+[100,120,140,160].forEach(function(v){s+='<line x1="'+l+'" x2="'+(W-r)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--ln)"/><text x="4" y="'+(Y(v)+4)+'" font-size="11" fill="var(--mu)">'+v+'%</text>'});
+[0,15,30,45,60].forEach(function(d){s+='<text x="'+X(d)+'" y="'+(H-8)+'" font-size="11" text-anchor="middle" fill="var(--mu)">D'+d+'</text>'});
+s+='<path d="'+p+'" fill="none" stroke="var(--ac)" stroke-width="3"/>';
+if(a)s+='<path d="'+a+'" fill="none" stroke="var(--ok)" stroke-width="3" stroke-dasharray="5 4"/>';
+s+='</svg>';document.getElementById("c1").innerHTML=s}
+function lastDay(){var m=0;for(var k in done){if(+k>m)m=+k}return m}
+function chart2(){
+var W=640,H=220,l=30,bt=34,t=16,vals=[["D1-14",0],["D15-28",0],["D29-42",3],["D43-49",3],["D50-56",5],["D57-60",8]];
+var ph=H-t-bt,bw=70,gap=(W-l-6*bw)/7,s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Push-up ladder graph">';
+vals.forEach(function(v,i){var x=l+gap+i*(bw+gap),h=v[1]/10*ph;if(v[1]==0)h=4;
+s+='<rect x="'+x+'" y="'+(t+ph-h)+'" width="'+bw+'" height="'+h+'" rx="8" fill="var(--ac2)" opacity="'+(0.45+i*0.11)+'"/>';
+s+='<text x="'+(x+bw/2)+'" y="'+(t+ph-h-5)+'" font-size="12" text-anchor="middle" fill="var(--tx)">'+(v[1]||"incline")+'</text>';
+s+='<text x="'+(x+bw/2)+'" y="'+(H-14)+'" font-size="11" text-anchor="middle" fill="var(--mu)">'+v[0]+'</text>'});
+s+='</svg>';document.getElementById("c2").innerHTML=s}
+function plan(){var h="";PLAN.forEach(function(d){h+="<details><summary>"+d[0]+" <span class='mu'>— "+d[1]+"</span></summary><table><tr><th>Exercise</th><th>Tip</th><th>Sets</th></tr>";
+d[2].forEach(function(e){var plank=/Plank|hold|wall sit/i.test(e[0]);h+="<tr><td>"+e[0]+"</td><td class='mu'>"+e[1]+"</td><td>"+(plank?"4 × 30-60s":"4 × 12-15")+"</td></tr>"});
+h+="</table></details>"});document.getElementById("plan").innerHTML=h}
+document.getElementById("rst").onclick=function(){if(confirm("Reset all progress?")){done={};save();render()}};
+plan();chart2();render();
+</script>
+</body></html>
